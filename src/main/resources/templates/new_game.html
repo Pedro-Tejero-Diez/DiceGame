@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>DICE GAME</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container my-4">
+		<h1>DICE GAME</h1>
+		<hr>
+		<h2>NEW GAME</h2>
+
+        <form action="#" th:action="@{/{gamer_id}/games}" th:object="${gamerdto}" method="POST">
+			
+         
+
+           <button class="btn btn-lg btn-primary btn-danger" type="submit" > PLAY</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/}" class="btn btn-primary btn-sm mb-3"> Back to the List</a>
+    </div>
+</body>
+
+</html>

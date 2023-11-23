@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>DICE GAME</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<body>
+	<div class="container my-4">
+		<h1>DICE GAME</h1>
+		<hr>
+			<div class="row">
+    <div class="col">
+		<h2>LAST GAME RESULT</h2>
+    </div>
+    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+		<form>
+				<input type="button" class="btn btn-danger btn-lg mb-3" value="Volver" onclick="history.back()">
+			</form>
+    </div>
+
+		<div class="container my-4">
+			<br class="row">
+			<table border="1" class="table table-striped table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>Game Date</th>
+						<th>Dice 1</th>
+						<th>Dice 2</th>
+						<th>Win</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:object="${game}">
+
+						<td th:text="*{gamedate}"></td>
+						<td th:text="*{one}"></td>
+						<td th:text="*{two}"></td>
+						<td th:text="*{win}"></td>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/Players/Ranking}" class="btn btn-primary btn-lg mb-3"> Ranking</a>
+			<a th:href="@{/Players/}" class="btn btn-primary btn-lg mb-3"> Gamers List</a>
+
+		</div>
+</body>
+
+</html>

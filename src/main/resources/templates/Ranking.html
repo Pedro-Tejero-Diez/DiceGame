@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>DICE GAME</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container my-4">
+    <h1>DICE GAME</h1>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h1>RANKING</h1>
+        </div>
+        <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a th:href="@{/gamers/Ranking/loser}" class="btn btn-primary btn-lg mb-3"> LOSER</a>
+                <a th:href="@{/gamers/Ranking/winner}" class="btn btn-primary btn-lg mb-3"> WINNER</a>
+            </div>
+
+        </div>
+        <div class="col">
+            <a th:href="@{/Players/}" class="btn btn-secondary btn-lg mb-3"> Gamers List</a>
+        </div>
+        <div class="container my-4">
+            <table border="1" class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>GAMER NAME</th>
+                    <th>%MEAN SUCCESS</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="GamerDto : ${gamers}">
+
+                    <td th:text="${GamerDto.name}"></td>
+                    <td th:text="${GamerDto.win}"></td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+</body>
+
+</html>

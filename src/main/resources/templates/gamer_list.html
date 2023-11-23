@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>DICE GAME</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container my-4">
+		<h1>DICE GAME</h1>
+		<hr>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h1>GAMERS</h1>
+				</div>
+				<div class=class="col d-grid gap-2 d-md-flex justify-content-md-end">
+					<a th:href="@{/gamers/Ranking}" class="btn btn-primary btn-lg mb-3"> Ranking</a>
+				</div>
+			</div>
+
+
+			<table border="1" class="table table-striped table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>gamer_id</th>
+						<th>Name</th>
+						<th>%success</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="GamerDto : ${gamers}">
+						<td th:text="${GamerDto.gamer_id}"></td>
+						<td th:text="${GamerDto.name}"></td>
+						<td th:text="${GamerDto.win}"></td>
+						<td> <a th:href="@{/gamers/{id}/games (id=${GamerDto.gamer_id})}"
+								class="btn btn-primary">Show</a>
+							<a th:href="@{/gamers/{id}/getOne(id=${GamerDto.gamer_id})}"
+								class="btn btn-danger">Update</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</body>
+
+</html>

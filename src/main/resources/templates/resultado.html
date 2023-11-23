@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>JUEGO DE DADOS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+   <div class="container my-4">
+        <h1>JUEGO DE DADOS</h1>
+        <hr>
+        <h2>JUGADA</h2>
+
+    <div class="container my-4">
+  
+
+        <table border="1" class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>DADO 1</th>
+                    <th>DADO 2</th>
+                    <th>WIN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th="jugadadto : ${jugadadto}">
+                    <td th:text="${jugadadto.uno}"></td>
+                    <td th:text="${jugadadto.dos}"></td>
+                    <td th:text="${jugadadto.win}"></td>
+                </tr>
+            </tbody>
+        </table>
+                <a th:href="@{/Sucursal/nuevasucursal}" class="btn btn-primary btn-lg mb-3"> Nueva  Sucursal </a> 
+
+    </div>
+</body>
+
+</html>

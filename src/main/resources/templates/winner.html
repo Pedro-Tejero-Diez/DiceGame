@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>JUEGO DE DADOS</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container my-4">
+		<h1>JUEGO DE DADOS</h1>
+		<hr>
+
+    <br class="col-md-auto">
+		<br></br>
+      	<h2 class="text-center">MEJOR JUGADOR</h2>
+				</tr>
+				<br></br>
+					<tr>
+						<td>
+							<h1 class="font-weight-bold text-uppercase text-center" th:text="${nombreg}" </h1>
+						</td>
+					</tr>
+				</table>
+				<br></br>
+				<a th:href="@{/Players/Ranking}" class="btn btn-lg btn-info"> Volver</a>
+
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
