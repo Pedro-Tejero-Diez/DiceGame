@@ -68,7 +68,7 @@ public class GamerController {
                 GamerDto gamerdto = GamerMapper.toGamerDto(gamer);
                 model.addAttribute("games", games);
                 model.addAttribute("gamer", gamerdto);
-                return "gamer";
+                return "game";
             } else
                 return "not_found";
         } catch (Exception e) {
