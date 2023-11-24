@@ -12,7 +12,7 @@ import v1.DiceGame.services.IGamerService;
 
 
 @Controller
-@RequestMapping("/gamers")
+@RequestMapping("/games")
 public class GameController {
 
     @Autowired

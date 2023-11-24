@@ -36,10 +36,10 @@
 					<tr th:each="GamerDto : ${gamers}">
 						<td th:text="${GamerDto.gamer_id}"></td>
 						<td th:text="${GamerDto.name}"></td>
-						<td th:text="${GamerDto.win}"></td>
+						<td th:text="${GamerDto.success}"></td>
 						<td> <a th:href="@{/gamers/{id}/games (id=${GamerDto.gamer_id})}"
 								class="btn btn-primary">Show</a>
-							<a th:href="@{/gamers/{id}/getOne(id=${GamerDto.gamer_id})}"
+							<a th:href="@{/gamers/{id}/getOne (id=${GamerDto.gamer_id})}"
 								class="btn btn-danger">Update</a>
 						</td>
 					</tr>

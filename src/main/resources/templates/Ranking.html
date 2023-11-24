@@ -24,7 +24,7 @@
 
         </div>
         <div class="col">
-            <a th:href="@{/Players/}" class="btn btn-secondary btn-lg mb-3"> Gamers List</a>
+            <a th:href="@{/gamers/}" class="btn btn-secondary btn-lg mb-3"> Gamers List</a>
         </div>
         <div class="container my-4">
             <table border="1" class="table table-striped table-bordered">
@@ -38,7 +38,7 @@
                 <tr th:each="GamerDto : ${gamers}">
 
                     <td th:text="${GamerDto.name}"></td>
-                    <td th:text="${GamerDto.win}"></td>
+                    <td th:text="${GamerDto.success}"></td>
                     </td>
                 </tr>
                 </tbody>

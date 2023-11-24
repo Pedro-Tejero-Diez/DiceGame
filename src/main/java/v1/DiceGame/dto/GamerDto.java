@@ -15,7 +15,7 @@ public class GamerDto {
     private String gamer_id;
     private String name;
     private List<Game> games;
-    private float win;
+    private float success;
 
     public GamerDto(String gamer_id, String name, List<Game> games) {
 
@@ -23,17 +23,17 @@ public class GamerDto {
         this.name = name;
         this.games = games;
         float summation = 0;
-        for (Game game : games) {
-            if ((game.getOne() + game.getTwo() == 7)) {
+        for (int i = 0; i<games.size(); i++) {
+            if((games.get(i).getOne() + games.get(i).getTwo() == 7)) {
                 summation += 1;
             }
         }
-        this.setWin((float) (summation / games.size()) * 100);
+        this.setSuccess((float) (summation / games.size()) * 100);
     }
 
-    public GamerDto (String gamer_id, String name) {
+   public GamerDto (String gamer_id, String name) {
         this.gamer_id = gamer_id;
         this.name = name;
-    };
+    }
 }
 

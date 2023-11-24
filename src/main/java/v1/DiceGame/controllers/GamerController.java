@@ -37,10 +37,11 @@ public class GamerController {
     }
 
     @GetMapping("/")
-    public String gamers(Model model) {
+    public String AllGamers(Model model) {
         List<Gamer> gamers = gamerservice.getAllGamer();
-        model.addAttribute("gamers",
-                gamers.stream().map(GamerMapper::toGamerDto).collect(Collectors.toList()));
+        List<GamerDto> gamersdto = gamers.stream().map(GamerMapper::toGamerDto).collect(Collectors.toList());
+        model.addAttribute("gamers", gamersdto);
+
         return "gamer_list";
     }
 
@@ -76,13 +77,25 @@ public class GamerController {
     }
 
     @PostMapping("/{gamer_id}/games")
-    public String pantallagame(@PathVariable(value = "gamer_id") String gamer_id, @ModelAttribute GamerDto gamerdto,
+    public String gameScreen (@PathVariable(value = "gamer_id") String gamer_id, @ModelAttribute GamerDto gamerdto,
                                RedirectAttributes ra, Model model) {
         try {
             GameDto gamedto = new GameDto(gamerdto);
             gameservice.saveGame(gamedto);
             ra.addFlashAttribute("game", gamedto);
-            return "redirect:/Players/{gamer_id}/game";
+            return "redirect:/gamers/{gamer_id}/games";
+        } catch (Exception e) {
+            return "error";
+        }
+    }
+    @GetMapping("/{gamer_id}/deletelist")
+    public String deleteLists (@PathVariable(value = "gamer_id") String gamer_id, RedirectAttributes ra,
+                              Model model) {
+        try {
+            Gamer gamer = gamerservice.getGamerById(gamer_id);
+            ra.addFlashAttribute("gamer", gamer);
+            return "redirect:/games/{gamer_id}/delete";
+
         } catch (Exception e) {
             return "error";
         }
@@ -100,7 +113,7 @@ public class GamerController {
     public String showLoser(Model model) {
         List<GamerDto> gameres = gamerservice.getAllGamer().stream().map(GamerMapper::toGamerDto)
                 .toList();
-        String losername = gameres.stream().min(Comparator.comparing(GamerDto::getWin)).get().getName();
+        String losername = gameres.stream().min(Comparator.comparing(GamerDto::getSuccess)).get().getName();
         model.addAttribute("nameL", losername);
         return "loser";
     }
@@ -109,7 +122,7 @@ public class GamerController {
     public String showWinner(Model model) {
         List<GamerDto> gameres = gamerservice.getAllGamer().stream().map(GamerMapper::toGamerDto)
                 .toList();
-        String winnername = gameres.stream().max(Comparator.comparing(GamerDto::getWin)).get().getName();
+        String winnername = gameres.stream().max(Comparator.comparing(GamerDto::getSuccess)).get().getName();
         model.addAttribute("nameW", winnername);
         return "winner";
     }
@@ -142,16 +155,5 @@ public class GamerController {
         }
     }
 
-    @GetMapping("/{gamer_id}/deletelist")
-    public String deleteLists(@PathVariable(value = "gamer_id") String gamer_id, RedirectAttributes ra,
-                              Model model) {
-        try {
-            Gamer gamer = gamerservice.getGamerById(gamer_id);
-            ra.addFlashAttribute("gamer", gamer);
-            return "redirect:/gamers/{gamer_id}/delete";
 
-        } catch (Exception e) {
-            return "error";
-        }
-    }
 }
