@@ -23,6 +23,9 @@
 			<form th:action="@{/gamers/{id}/deletelist (id=${gamer.gamer_id})}" th:object="${gamer}">
 				<input type="submit" class="btn btn-lg btn-danger" value="DELETE GAMES">
 			</form>
+			<form th:action="@{/gamers/}">
+				<input type="submit" class="btn btn-lg" value="Gamers List">
+			</form>
 		</div>
 		<hr>
 		<table border="1" class="table table-striped table-bordered">

@@ -1,4 +1,6 @@
 package v1.DiceGame.controllers;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import v1.DiceGame.services.IGamerService;
 @Controller
 @RequestMapping("/games")
 public class GameController {
+    private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 
     @Autowired
     IGamerService gamerservice;
@@ -26,6 +29,8 @@ public class GameController {
             gameservice.deleteGames(gamer_id);
 
         } catch (Exception e) {
+            logger.error("Error deleting games for gamer with id: {}", gamer_id, e);
+
             return "error";
         }
         return "success";

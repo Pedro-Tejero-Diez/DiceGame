@@ -5,7 +5,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import v1.DiceGame.entities.Game;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 @NoArgsConstructor
 @Setter
@@ -23,12 +26,19 @@ public class GamerDto {
         this.name = name;
         this.games = games;
         float summation = 0;
-        for (int i = 0; i<games.size(); i++) {
-            if((games.get(i).getOne() + games.get(i).getTwo() == 7)) {
+        for (Game game : games) {
+            if ((game.getOne() + game.getTwo() == 7)) {
                 summation += 1;
             }
         }
-        this.setSuccess((float) (summation / games.size()) * 100);
+        // Calculate success percentage
+        float successPercentage = (float) (summation / games.size()) * 100;
+
+        // Format the result to two decimal places
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
+        DecimalFormat df = new DecimalFormat("#.##", symbols);
+        this.success = Float.parseFloat(df.format(successPercentage));
+        //this.setSuccess((float) (summation / games.size()) * 100);
     }
 
    public GamerDto (String gamer_id, String name) {

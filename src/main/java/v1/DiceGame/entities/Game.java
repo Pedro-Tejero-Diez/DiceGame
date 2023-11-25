@@ -3,6 +3,7 @@ package v1.DiceGame.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @Document(collection="games")
 public class Game {
 
-    @MongoId
+    @Id
     private String game_id;
     private LocalDate gamedate;
     private byte one;

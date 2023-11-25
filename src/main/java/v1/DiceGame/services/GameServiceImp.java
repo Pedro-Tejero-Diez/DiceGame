@@ -8,6 +8,7 @@ import v1.DiceGame.entities.Gamer;
 import v1.DiceGame.repository.GameRepository;
 import v1.DiceGame.repository.GamerRepository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,14 +42,11 @@ public class GameServiceImp implements IGameService {
     @Override
     public void deleteGames(String gamer_id) {
 
-        Optional<Gamer> gamer = gamerrepository.findById(gamer_id);
-
-        if (gamer.isPresent()) {
-            Gamer gamer1 = gamer.get();
-            for (int i = 0; i < gamer1.getGames().size(); i++) {
-                gamerepository.deleteById(gamer1.getGames().get(i).getGame_id());
+            List<Game> games = gamerepository.findAll();
+            for (Game game : games) {
+                if (game.getGamer().getGamer_id().equals(gamer_id)) {
+                    gamerepository.delete(game);
+                }
             }
         }
-
     }
-}
