@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  mongodb:
+    build:
+      context: .
+      dockerfile: Dockerfile.mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - mynetwork
+
+  spring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.aplication
+    container_name: spring-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: mynetwork
