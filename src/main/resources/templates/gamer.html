@@ -20,7 +20,7 @@
 				<input type="submit" class="btn btn-lg btn-primary" value="NEW GAME">
 			</form>
 
-			<form th:action="@{/games/{id}/deleteList (id=${gamer.gamer_id})}" th:object="${gamer}">
+			<form th:action="@{/gamers/{id}/deletelist (id=${gamer.gamer_id})}" th:object="${gamer}">
 				<input type="submit" class="btn btn-lg btn-danger" value="DELETE GAMES">
 			</form>
 		</div>

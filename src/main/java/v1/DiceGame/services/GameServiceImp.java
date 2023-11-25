@@ -40,13 +40,15 @@ public class GameServiceImp implements IGameService {
 
     @Override
     public void deleteGames(String gamer_id) {
+
         Optional<Gamer> gamer = gamerrepository.findById(gamer_id);
 
         if (gamer.isPresent()) {
             Gamer gamer1 = gamer.get();
             for (int i = 0; i < gamer1.getGames().size(); i++) {
-                gamerepository.delete(gamer1.getGames().get(i));
+                gamerepository.deleteById(gamer1.getGames().get(i).getGame_id());
             }
         }
+
     }
 }

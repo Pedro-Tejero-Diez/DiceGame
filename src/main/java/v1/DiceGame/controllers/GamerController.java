@@ -67,8 +67,8 @@ public class GamerController {
             if (gamer != null) {
                 GamerDto gamerdto = GamerMapper.toGamerDto(gamer);
                 model.addAttribute("games", games);
-                model.addAttribute("gamer", gamerdto);
-                return "game";
+                model.addAttribute("gamer", gamer);
+                return "gamer";
             } else
                 return "not_found";
         } catch (Exception e) {
