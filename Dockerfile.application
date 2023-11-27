@@ -1,0 +1,14 @@
+# Use the official OpenJDK with Alpine Linux as base image
+FROM openjdk:17-jdk-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the JAR file into the container at /app
+COPY ./out/artifacts/DiceGame_jar/DiceGame.jar /app/DiceGame.jar
+
+# Expose the port that your Spring Boot app will run on
+EXPOSE 8081
+
+# Command to run your Spring Boot application
+CMD ["java", "-jar", "/app/DiceGame.jar"]

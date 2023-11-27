@@ -2,22 +2,28 @@ version: '3'
 
 services:
   mongodb:
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile.mongo
     container_name: mongodb
     ports:
       - "27017:27017"
+    volumes:
+      - ./init-db.js:/docker-entrypoint-initdb.d/init-db.js
     networks:
       - mynetwork
 
   spring-app:
+    #restart: always
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
     build:
       context: .
-      dockerfile: Dockerfile.aplication
+      dockerfile: Dockerfile.application
     container_name: spring-app
     ports:
-      - "8080:8080"
+      - "8081:8081"
     depends_on:
       - mongodb
     networks:
