@@ -2,6 +2,7 @@ version: '3'
 
 services:
   mongodb:
+    container_name: mongodb
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: user
@@ -10,7 +11,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.mongo
-    container_name: mongodb
     ports:
       - "27017:27017"
     volumes:
@@ -24,7 +24,7 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
     build:
       context: .
-      dockerfile: Dockerfile.application
+      dockerfile: Dockerfile.myapp
     container_name: spring-app
     ports:
       - "8081:8081"
