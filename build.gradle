@@ -5,6 +5,7 @@ plugins {
 	id 'application'
 }
 
+
 group = 'v1'
 version = '0.0.1-SNAPSHOT'
 
@@ -16,15 +17,16 @@ repositories {
     mavenCentral()
 }
 
-bootJar {
-    mainClassName = 'v1.DiceGame.DiceGameApplication'
+jar {
     manifest {
         attributes(
-                'Spring-Boot-Version': '2.6.0',
                 'Main-Class': 'v1.DiceGame.DiceGameApplication'
         )
     }
-    enabled = false
+}
+
+bootJar {
+    duplicatesStrategy = 'exclude'
 }
 configurations {
     compileOnly {

@@ -21,7 +21,12 @@ services:
   spring-app:
     #restart: always
     environment:
-      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+        SPRING_DATA_MONGODB_HOST: mongodb
+        SPRING_DATA_MONGODB_PORT: 27017
+        SPRING_DATA_MONGODB_DATABASE: Dice_Game
+        SPRING_DATA_MONGODB_USERNAME: normalUser
+        SPRING_DATA_MONGODB_PASSWORD: password
+
     build:
       context: .
       dockerfile: Dockerfile.myapp
@@ -36,5 +41,5 @@ services:
 networks:
   mynetwork:
     driver: bridge
-    driver_opts:
-      com.docker.network.bridge.name: mynetwork
+    # driver_opts:
+      # com.docker.network.bridge.name: mynetwork
