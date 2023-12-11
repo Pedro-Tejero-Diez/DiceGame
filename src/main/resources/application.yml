@@ -3,8 +3,6 @@ spring:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   data:
     mongodb:
-      # host: mongodb
-      # port: 27017
-      uri: mongodb://mongodb:27017/Dice_Game
+      uri: mongodb://localhost:27017/Dice_Game
 server:
   port: 8081
