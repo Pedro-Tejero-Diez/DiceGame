@@ -1,8 +1,4 @@
-use admin;
-
-db.auth("user", "password");
-
-use Dice_Game;
+use Dice_Game
 
 db.createUser({
     user: "normalUser",
@@ -10,5 +6,4 @@ db.createUser({
     roles: [
       { role: "readWrite", db: "Dice_Game" }
     ]
-  });
-
+  })
